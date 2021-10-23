@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"allowUnreachableCode": false,
+		"noEmit": false,
+		"outDir": "out",
+		"sourceMap": true,
+		"noImplicitAny": false,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"removeComments": false,
+	},
+	"buildOptions": {
+		"verbose": true,
+	},
+	"compileOnSave": true,
+}
+

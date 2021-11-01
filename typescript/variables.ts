@@ -1,4 +1,4 @@
-import {LinkedList, DoubleLinkedList} from "./linked-list";
+import { LinkedList, DoubleLinkedList, CircularLinkedList } from "./linked-list";
 
 
 console.log("\nLISTA ENLAZADA SIMPLE\n")
@@ -24,5 +24,21 @@ const DoubleLinkedListArray = [newDoubleLinkedList1, newDoubleLinkedList2, newDo
 newDoubleLinkedList.addMany(DoubleLinkedListArray);
 newDoubleLinkedList.addManyPrev(DoubleLinkedListArray);
 
-
 newDoubleLinkedList.displayAll()
+
+
+const newCircularLinkedList = new CircularLinkedList(333)
+const newCircularLinkedList1 = new CircularLinkedList(123)
+const newCircularLinkedList2 = new CircularLinkedList(223)
+const newCircularLinkedList3 = new CircularLinkedList(333)
+const newCircularLinkedList4 = new CircularLinkedList(253)
+
+newCircularLinkedList.addOne(newCircularLinkedList1)
+newCircularLinkedList.addOne(newCircularLinkedList2)
+newCircularLinkedList.addOne(newCircularLinkedList3)
+newCircularLinkedList.addOne(newCircularLinkedList4)
+
+
+newCircularLinkedList.displayAll()
+
+

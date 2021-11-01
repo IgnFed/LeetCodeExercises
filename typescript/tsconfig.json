@@ -1,8 +1,10 @@
 {
 	"compilerOptions": {
-		"allowUnreachableCode": false,
+        "target":"ES6",
+        "module":"commonjs",
+        "allowUnreachableCode": false,
 		"noEmit": false,
-		"outDir": "out",
+        "outDir": "out",
 		"sourceMap": true,
 		"noImplicitAny": false,
 		"noImplicitReturns": true,

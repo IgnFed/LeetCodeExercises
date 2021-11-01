@@ -3,7 +3,7 @@ export default interface ILinkedList {
 	next: ILinkedList | null,
 	addOne(next?: number | ILinkedList): ILinkedList,
 	addMany(next?: ILinkedList[]): ILinkedList,
-	displayAll(): void
+	displayAll(): void;
 
 }
 

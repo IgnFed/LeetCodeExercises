@@ -20,7 +20,27 @@ export class LinkedList implements ILinkedList {
     return this;
   }
 
-  insertAt(node: SimpleNode, from: number): LinkedList {
+  insertAt(node: SimpleNode, to: number): LinkedList {
+    if(this.NodeList.length > 0){
+      if(to <= 0){
+        node.pointer = this.NodeList;
+        this.NodeList.unshift(node);
+      }
+      else if(to >= this.NodeList.length - 1){
+        this.NodeList[this.NodeList.length - 1].pointer = node;
+        this.NodeList.push(node);
+        console.log(node)
+      }
+      else{
+        const tmpArr: SimpleNode[] = this.NodeList.slice(to, this.NodeList.length - 1);
+        this.NodeList.push(node);
+        this.NodeList.push(...tmpArr);
+        console.log(node)
+      }
+    }
+    else this.NodeList.push(node);
+
+
     return this;
   }
 

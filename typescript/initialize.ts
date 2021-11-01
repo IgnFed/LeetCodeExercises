@@ -13,12 +13,10 @@ function initialize(LinkedList): SimpleNode[]{
 
 const newLinkedList = new LinkedList();
 
-//initialize(newLinkedList)
-
-
+newLinkedList.add(...initialize(newLinkedList));
 //newLinkedList.add(...initialize(newLinkedList));
-newLinkedList.add(new SimpleNode(1), new SimpleNode(2), new SimpleNode(3));
+//newLinkedList.add(new SimpleNode(1), new SimpleNode(2), new SimpleNode(3));
 
-
+newLinkedList.insertAt(new SimpleNode(23), -1);
 
 newLinkedList.print()

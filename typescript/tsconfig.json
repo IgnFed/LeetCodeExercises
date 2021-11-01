@@ -5,7 +5,7 @@
         "allowUnreachableCode": false,
 		"noEmit": false,
         "outDir": "out",
-		"sourceMap": true,
+		"sourceMap": false,
 		"noImplicitAny": false,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,

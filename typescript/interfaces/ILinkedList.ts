@@ -1,10 +1,12 @@
-export default interface ILinkedList {
-	val: number,
-	next: ILinkedList | null,
-	addOne(next?: number | ILinkedList): ILinkedList,
-	addMany(next?: ILinkedList[]): ILinkedList,
-	displayAll(): void;
+import ISimpleNode from './ISimpleNode'
 
+export default interface ILinkedList {
+  add(node: ISimpleNode): ILinkedList,
+  addMany(nodes: ISimpleNode[]): ILinkedList,
+  insertAt(node: ISimpleNode, from: number): ILinkedList,
+  removeAt(from: number): ILinkedList,
+  printNoFormat(): void,
+  print():void;
 }
 
 

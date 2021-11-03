@@ -1,26 +1,9 @@
-import {IUtils} from './interfaces/index'
+import Utils from './interfaces/Utils';
 
-export default class Utils{
-  hash: string | null;
-  constructor(){
-    this.hash;
-  }
 
-  #setUniqKey():Utils{
-    if(!this.hash){
-      let min: number = Math.random()
-      let max: number = Math.random()
-      let sign: number = Math.round(Math.random()+0.04)
-      this.hash = `hash@${Math.random()*(min - max)}${sign ===0 ? "-" : "-"}${((max-min))}`
-
-    }
-    return this;
-
-  }
-  getUniqKey():string{
-    return this.hash ? this.hash : this.#setUniqKey().hash;
-  }
+export default class Util implements Utils{
+   green(msg:string):void { console.log('\x1b[32m%s\x1b[0m', msg)}
+   red(msg:string):void { console.log('\x1b[31m%s\x1b[0m', msg)}
+   blue(msg:string):void  { console.log('\x1b[36m%s\x1b[0m', msg)}
+   yellow(msg:string):void { console.log('\x1b[33m%s\x1b[0m', msg)}
 }
-
-const m = new Utils()
-console.log(m.getUniqKey());

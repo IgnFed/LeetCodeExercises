@@ -1,15 +1,18 @@
-import {SimpleNode} from './nodeClasses'
-import {ILinkedList} from './interfaces/index'
+import SimpleNode from '../nodeClasses/SimpleNode';
+import ILinkedList from '../interfaces/lists/ILinkedList';
 
-export class LinkedList implements ILinkedList {
+export default class SimpleLinkedList implements ILinkedList {
   NodeList: SimpleNode[] | null;
 
-  constructor(...NodeList: SimpleNode[]){
-    this.NodeList = [];
-    if(NodeList[0]) this.add(...NodeList);
+  constructor(...NodeList: SimpleNode[] | null){
+    this.NodeList = NodeList || null;
   }
 
-  add(...nodes: SimpleNode[]): LinkedList {
+
+
+
+
+  add(...nodes: SimpleNode[]): SimpleLinkedList {
 
     if(this.NodeList.length > 0) this.NodeList[this.NodeList.length - 1].pointer = nodes[0];
     nodes.forEach((node:SimpleNode, idx: number) =>{
@@ -20,22 +23,20 @@ export class LinkedList implements ILinkedList {
     return this;
   }
 
-  insertAt(node: SimpleNode, to: number): LinkedList {
+  insertAt(node: SimpleNode, to: number): SimpleLinkedList {
     if(this.NodeList.length > 0){
       if(to <= 0){
-        node.pointer = this.NodeList;
+        node.pointer = this.NodeList[0];
         this.NodeList.unshift(node);
       }
       else if(to >= this.NodeList.length - 1){
         this.NodeList[this.NodeList.length - 1].pointer = node;
         this.NodeList.push(node);
-        console.log(node)
       }
       else{
-        const tmpArr: SimpleNode[] = this.NodeList.slice(to, this.NodeList.length - 1);
+        const tmpArr: SimpleNode[] = this.NodeList.splice(to, this.NodeList.length - 1)
         this.NodeList.push(node);
         this.NodeList.push(...tmpArr);
-        console.log(node)
       }
     }
     else this.NodeList.push(node);
@@ -44,7 +45,7 @@ export class LinkedList implements ILinkedList {
     return this;
   }
 
-  removeAt(from: number): LinkedList {
+  removeAt(from: number): SimpleLinkedList {
     if(from <= 0) this.NodeList.splice(0, 1);
     else if(from >= this.NodeList.length - 1){
       this.NodeList.splice(this.NodeList.length - 1 , 1);
@@ -60,7 +61,7 @@ export class LinkedList implements ILinkedList {
   print(): void {
     let msg = '';
     this.NodeList.forEach((node:SimpleNode, idx: number)=>{
-      msg += `${idx != this.NodeList.length - 1 ? `${node.value} -> `: ` -> ${node.value} -> ${node.pointer}`}`;
+      msg += `${idx != this.NodeList.length - 1 ? `${node.value} -> `: `${node.value} -> ${node.pointer}`}`;
     })
     console.log(msg);
   }

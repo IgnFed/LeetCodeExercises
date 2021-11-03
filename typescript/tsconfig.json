@@ -9,6 +9,7 @@
 		"noImplicitAny": false,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
+        "noImplicitOverride": true,
 		"removeComments": false,
 	},
 	"buildOptions": {

@@ -8,10 +8,6 @@ export default class SimpleLinkedList implements ILinkedList {
     this.NodeList = NodeList || null;
   }
 
-
-
-
-
   add(...nodes: SimpleNode[]): SimpleLinkedList {
 
     if(this.NodeList.length > 0) this.NodeList[this.NodeList.length - 1].pointer = nodes[0];
@@ -29,10 +25,7 @@ export default class SimpleLinkedList implements ILinkedList {
         node.pointer = this.NodeList[0];
         this.NodeList.unshift(node);
       }
-      else if(to >= this.NodeList.length - 1){
-        this.NodeList[this.NodeList.length - 1].pointer = node;
-        this.NodeList.push(node);
-      }
+      else if(to >= this.NodeList.length - 1) this.add(node);
       else{
         const tmpArr: SimpleNode[] = this.NodeList.splice(to, this.NodeList.length - 1)
         this.NodeList.push(node);

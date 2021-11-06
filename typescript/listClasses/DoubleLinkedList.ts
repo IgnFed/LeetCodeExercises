@@ -4,11 +4,9 @@ import IDoubleLinkedList from '../interfaces/lists/IDoubleLinkedList';
 
 export default class DoubleLinkedList extends SimpleLinkedList implements IDoubleLinkedList{
   override NodeList: DoubleNode[] | null;
-  previous: DoubleNode | null;
 
   constructor(...DoubleNodeList: DoubleNode[] | null){
     super(...DoubleNodeList);
-    this.previous = null;
     this.setPointers();
   }
 
@@ -25,12 +23,10 @@ export default class DoubleLinkedList extends SimpleLinkedList implements IDoubl
 }
 
   addPrevious(...nodes: DoubleNode[]): DoubleLinkedList{
-    nodes.forEach((node, idx)=>{
-      if(idx > 0){
+    nodes.forEach((node: DoubleNode)=>{
         node.pointer = this.NodeList[0];
         this.NodeList[0].previous = node;
         this.NodeList.unshift(node);
-      }
     })
     return this;
   }
@@ -47,11 +43,7 @@ export default class DoubleLinkedList extends SimpleLinkedList implements IDoubl
   }
 
   override insertAt(node: DoubleNode, to: number): DoubleLinkedList{
-    if(to <= 0){
-      this.NodeList[0].previous = node;
-      node.pointer = this.NodeList[0];
-      this.NodeList.unshift(node);
-    }
+    if(to <= 0) this.addPrevious(node);
     else if(to >= this.NodeList.length - 1) this.add(node);
 
     else{
@@ -93,6 +85,7 @@ export default class DoubleLinkedList extends SimpleLinkedList implements IDoubl
     let msg = ``;
     this.NodeList.forEach((node, idx)=>{
       msg += `${idx > 0 ? '  ': ''}${node.previous ? node.previous.value : node.previous} ${idx > 0 ? '  <-- ' : ' <-- '} ${node.value} ${idx > 0 ? ' --> ': ' --> '}  ${node.pointer ? node.pointer.value : node.pointer}\n`
+
     })
     console.log(msg);
   }

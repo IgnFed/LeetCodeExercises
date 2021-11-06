@@ -25,12 +25,10 @@ export default class DoubleLinkedList extends SimpleLinkedList implements IDoubl
 }
 
   addPrevious(...nodes: DoubleNode[]): DoubleLinkedList{
-    nodes.forEach((node, idx)=>{
-      if(idx > 0){
+    nodes.forEach((node: DoubleNode)=>{
         node.pointer = this.NodeList[0];
         this.NodeList[0].previous = node;
         this.NodeList.unshift(node);
-      }
     })
     return this;
   }
@@ -93,6 +91,7 @@ export default class DoubleLinkedList extends SimpleLinkedList implements IDoubl
     let msg = ``;
     this.NodeList.forEach((node, idx)=>{
       msg += `${idx > 0 ? '  ': ''}${node.previous ? node.previous.value : node.previous} ${idx > 0 ? '  <-- ' : ' <-- '} ${node.value} ${idx > 0 ? ' --> ': ' --> '}  ${node.pointer ? node.pointer.value : node.pointer}\n`
+
     })
     console.log(msg);
   }

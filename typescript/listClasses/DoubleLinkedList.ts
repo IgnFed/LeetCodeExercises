@@ -4,11 +4,9 @@ import IDoubleLinkedList from '../interfaces/lists/IDoubleLinkedList';
 
 export default class DoubleLinkedList extends SimpleLinkedList implements IDoubleLinkedList{
   override NodeList: DoubleNode[] | null;
-  previous: DoubleNode | null;
 
   constructor(...DoubleNodeList: DoubleNode[] | null){
     super(...DoubleNodeList);
-    this.previous = null;
     this.setPointers();
   }
 
@@ -45,11 +43,7 @@ export default class DoubleLinkedList extends SimpleLinkedList implements IDoubl
   }
 
   override insertAt(node: DoubleNode, to: number): DoubleLinkedList{
-    if(to <= 0){
-      this.NodeList[0].previous = node;
-      node.pointer = this.NodeList[0];
-      this.NodeList.unshift(node);
-    }
+    if(to <= 0) this.addPrevious(node);
     else if(to >= this.NodeList.length - 1) this.add(node);
 
     else{

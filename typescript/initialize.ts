@@ -7,6 +7,9 @@ import DoubleNode from './nodeClasses/DoubleNode';
 import SimpleCircularLinkedList from './listClasses/SimpleCircularLinkedList';
 import SimpleCircularNode from './nodeClasses/SimpleCircularNode';
 
+import DoubleCircularLinkedList from './listClasses/DoubleCircularLinkedList';
+import DoubleCircularNode from './nodeClasses/DoubleCircularNode';
+
 import Util from './Utils';
 
 const Console = new Util();
@@ -24,8 +27,6 @@ function initSimpleNode():SimpleNode[]{
 }
 
 const newSimpleLinkedList = new SimpleLinkedList(...initSimpleNode());
-newSimpleLinkedList.insertAt(new SimpleNode(23), 2)
-newSimpleLinkedList.removeAt(2);
 newSimpleLinkedList.print();
 
 
@@ -40,8 +41,6 @@ function initDoubleNode(multiply:number = 1): DoubleNode[]{
 
 
 const newDoubleLinkedList = new DoubleLinkedList(...initDoubleNode(2));
-newDoubleLinkedList.addPrevious(...initDoubleNode(-2));
-newSimpleLinkedList.removeAt(2);
 newDoubleLinkedList.print();
 
 
@@ -56,10 +55,22 @@ function initSimpleCircularNode(multiply:number = 1): SimpleCircularNode[]{
 
 
 const newSimpleCircularList = new SimpleCircularLinkedList(...initSimpleCircularNode(2));
-newSimpleCircularList.insertAt(new SimpleCircularNode(40), -1);
-newSimpleCircularList.insertAt(new SimpleCircularNode(70), 4);
-newSimpleCircularList.insertAt(new SimpleCircularNode(120), 20);
 newSimpleCircularList.print();
+
+
+
+Console.yellow( "\n"+"##".repeat(10) +" DOUBLE CIRCULAR LINKED LIST " + "##".repeat(10)+"\n");
+function initDoubleCircularNode(multiply:number = 1): DoubleCircularNode[]{
+  let arr: DoubleCircularNode[] = [];
+   for(let i =1; i<=10; i++){
+    arr.push(new DoubleCircularNode(i*multiply));
+  }
+  return arr;
+}
+
+
+const newDoubleCircularList = new DoubleCircularLinkedList(...initDoubleCircularNode(2));
+newDoubleCircularList.print();
 
 
 
